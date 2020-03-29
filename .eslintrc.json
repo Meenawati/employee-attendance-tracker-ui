@@ -1,0 +1,134 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:jasmine/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true
+    }
+  },
+  "plugins": [
+    "react",
+    "immutable",
+    "import",
+    "jasmine"
+  ],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.0"
+    }
+  },
+  "rules": {
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "always"],
+    "arrow-spacing": "error",
+    "camelcase": "error",
+    "dot-location": "off",
+    "consistent-this": "error",
+    "consistent-return": "error",
+    "import/imports-first": "error",
+    "import/export": "error",
+    "import/extensions": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-namespace": "error",
+    "import/no-unresolved": ["error", {"commonjs": true, "amd": true}],
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/order": "error",
+    "indent": ["error", 2, {"SwitchCase": 1, "ignoredNodes": ["JSXElement *"]}],
+    "eqeqeq": "error",
+    "linebreak-style": ["error", "windows"],
+    "func-style": ["error", "expression", {"allowArrowFunctions": true}],
+    "jsx-quotes": ["error", "prefer-single"],
+    "max-len": ["error", 140, 2],
+    "new-cap": ["error", {"newIsCap": true}],
+    "newline-after-var": "off",
+    "no-array-constructor": "error",
+    "no-class-assign": "error",
+    "no-cond-assign": "error",
+    "no-const-assign": "error",
+    "no-extra-bind": "error",
+    "no-extra-parens": ["error", "all", { "returnAssign": false }],
+    "no-func-assign": "error",
+    "no-mixed-requires": "error",
+    "no-multi-comp": "off",
+    "no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 1}],
+    "no-new": "error",
+    "no-new-func": "error",
+    "no-new-object": "error",
+    "no-new-require": "error",
+    "no-new-wrappers": "error",
+    "no-param-reassign": "error",
+    "no-plusplus": "error",
+    "no-return-assign": "error",
+    "no-sequences": "error",
+    "no-spaced-func": "error",
+    "no-undef": "error",
+    "no-unused-vars": ["error", {"vars": "all", "args": "after-used"}],
+    "no-var": "error",
+    "object-shorthand": ["error", "always"],
+    "operator-assignment": ["error", "never"],
+    "prefer-const": ["error", {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false
+    }],
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": false }],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "immutable/no-let": "error",
+    "react/jsx-boolean-value": [2, "always"],
+    "react/jsx-closing-bracket-location": ["error", "after-props"],
+    "react/jsx-equals-spacing": ["error", "never"],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-no-bind": ["error", {
+      "ignoreRefs": false,
+      "allowArrowFunctions": true,
+      "allowBind": true
+    }],
+    "react/jsx-no-duplicate-props": ["error", { "ignoreCase": false }],
+    "react/jsx-no-literals": "off",
+    "react/jsx-no-undef": "error",
+    "react/jsx-pascal-case": "error",
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "always",
+      "afterOpening": "never"
+    }],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/no-danger": "error",
+    "react/no-deprecated": "warn",
+    "react/no-did-mount-set-state": ["error", "disallow-in-func"],
+    "react/no-did-update-set-state": ["error", "disallow-in-func"],
+    "react/no-direct-mutation-state": "error",
+    "react/no-is-mounted": "error",
+    "react/no-multi-comp": ["error", { "ignoreStateless": true }],
+    "react/no-string-refs": "error",
+    "react/no-unknown-property": "error",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "error",
+    "react/self-closing-comp": ["error", {
+      "component": true,
+      "html": true
+    }],
+    "jasmine/new-line-before-expect": 0,
+    "use-isnan": "error"
+  }
+}

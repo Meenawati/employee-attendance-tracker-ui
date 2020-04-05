@@ -1,4 +1,4 @@
-import request from "superagent";
+import axios from "axios";
 
 import { fetchVacationSummary } from "../actions/VacationSummaryAction";
 import { fetchVacationDetail } from "../actions/VacationDetailAction";
@@ -51,25 +51,42 @@ export function onAddSelectedDates(selectedDates) {
 export function saveOrUpdateVacation(vacations) {
   return dispatch => {
     dispatch(addVacationPending());
-    request
-      .post("http://localhost:8080/employees/1/vacations")
-      .send(vacations)
-      .set("Accept", "application/json")
+    axios
+      .post(`http://localhost:8080/employees/1/vacations`, vacations)
       .then(res => {
-        if (res.error) {
-          throw res.error;
-        }
 
         dispatch(hideVacationForm());
         dispatch(fetchVacationSummary());
-        dispatch(fetchVacationDetail());
+        dispatch(fetchVacationDetail(vacations[0].vacationType));
         alert("Vacation application sent successfully");
-        return res;
       })
+
       .catch(error => {
-        dispatch(showFormError());
         alert("Oops! error occurred while submitting application!");
-        return error;
+        dispatch(showFormError());
+        console.log(error);
+      });
+  };
+}
+
+export function updateVacation(vacation, selectedVacationType) {
+  const {vacationDetailId} = vacation;
+  return dispatch => {
+    dispatch(addVacationPending());
+    axios
+      .put(`http://localhost:8080/employees/1/vacations/${vacationDetailId}`, vacation)
+      .then(res => {
+
+        dispatch(hideVacationForm());
+        dispatch(fetchVacationSummary());
+        dispatch(fetchVacationDetail(selectedVacationType));
+        alert("Vacation updated successfully");
+      })
+
+      .catch(error => {
+        alert("Oops! error occurred while submitting application!");
+        dispatch(showFormError());
+        console.log(error);
       });
   };
 }

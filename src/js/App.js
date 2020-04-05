@@ -7,6 +7,7 @@ import VacationDetail from "./components/VacationDetail";
 import VacationApplication from "./components/VacationApplication";
 import "../resources/css/App.css";
 
+
 function App() {
   return (
     <div className="App">

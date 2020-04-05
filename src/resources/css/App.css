@@ -2,9 +2,9 @@
   text-align: center;
   width: 100%;
   min-height: 100vh;
-  background: #b8dbc2;
+  background: #60aceb;
 
-  background-image: url("./../images/bg.jpg");
+  /* background-image: url("./../images/bg.jpg"); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -5,8 +5,9 @@ import "react-day-picker/lib/style.css";
 class DatePicker extends React.Component {
   constructor(props) {
     super(props);
+    const days = this.props.selectedDays;
     this.state = {
-      selectedDays: []
+      selectedDays: days
     };
     this.handleDayClick = this.handleDayClick.bind(this);
   }
@@ -30,6 +31,7 @@ class DatePicker extends React.Component {
     return (
       <div>
         <DayPicker
+          initialMonth={this.props.initialMonth}
           selectedDays={this.state.selectedDays}
           onDayClick={this.handleDayClick}
           disabledDays={[

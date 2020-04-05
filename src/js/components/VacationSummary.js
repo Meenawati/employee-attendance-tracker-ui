@@ -44,8 +44,9 @@ class VacationSummary extends Component {
       );
     if (vacationSummary.length !== 0) {
       return (
-        <div>
-          <VacationSummaryList vacationSummaryList={vacationSummary} />
+        <div className="rowSelection">
+          <VacationSummaryList vacationSummaryList={vacationSummary}
+          onRowClick = {this.onRowsSelected}/>
         </div>
       );
     } else {
@@ -53,6 +54,7 @@ class VacationSummary extends Component {
     }
   }
 }
+
 
 const mapStateToProps = state => ({
   error: getVacationSummaryError(state.vacationSummaryState),

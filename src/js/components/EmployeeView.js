@@ -46,9 +46,9 @@ class EmployeeView extends React.Component {
 
     return (
       <div className="meta">
-        <a href="#" className="author"></a>
+        <a className="author"></a>
         <br />
-        {employee.name} | {employee.department}
+        <div className="emp-info">{employee.name} | {employee.department}</div>
       </div>
     );
   }

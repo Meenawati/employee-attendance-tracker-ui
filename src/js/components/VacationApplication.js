@@ -6,6 +6,7 @@ import VacationModal from "./VacationModal";
 import { fetchEmployee } from "../actions/EmployeeAction";
 import { showVacationForm } from "../actions/ApplyVacationAction";
 import "./../../resources/css/VacationDetail.css";
+import { getVacationModalShowHideState } from "../reducers/ApplyVacationReducer";
 
 class VacationApplication extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class VacationApplication extends React.Component {
             <button className="vacation-appln-button" onClick={this.showForm}>
               APPLY FOR VACATION
             </button>
-            <VacationModal />
+            {this.props.vacationModalVisible ? <VacationModal /> : <div />}
           </div>
         </div>
       </div>
@@ -43,7 +44,7 @@ class VacationApplication extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  state: state
+  vacationModalVisible: getVacationModalShowHideState(state.vacationFormState)
 });
 
 const mapDispatchToProps = dispatch =>

@@ -31,7 +31,6 @@ export function fetchVacationSummary() {
         if (res.error) {
           throw res.error;
         }
-
         dispatch(fetchVacationSummarySucces(res));
         return res;
       })

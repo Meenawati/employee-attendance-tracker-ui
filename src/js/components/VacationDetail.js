@@ -4,22 +4,31 @@ import { bindActionCreators } from "redux";
 import Loader from "react-loader-spinner";
 
 import VacationDetailList from "./VacationDetailList";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { fetchVacationDetail } from "../actions/VacationDetailAction";
 import {
   getVacationDetail,
   getVacationDetailError,
-  getVacationDetailPending
+  getVacationDetailPending,
+  getVacationType
 } from "../reducers/VacationDetailReducer";
+import "./../../resources/css/VacationDetail.css";
+
+library.add(faTrash, faEdit);
 
 class VacationDetail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { vacationType: this.props.vacationType, vDetails: this.props.vacationDetail };
     this.shouldComponentRender = this.shouldComponentRender.bind(this);
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
 
-  componentWillMount() {
-    const { fetchVacationDetail } = this.props;
-    fetchVacationDetail();
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.vacationDetail){
+      this.setState({...this.state, vDetails: nextProps.vacationDetail})
+    }
   }
 
   shouldComponentRender() {
@@ -28,7 +37,7 @@ class VacationDetail extends React.Component {
   }
 
   render() {
-    const { vacationDetail } = this.props;
+    const vacationDetail = this.state.vDetails;
     if (!this.shouldComponentRender())
       return (
         <div className="spinner-center">
@@ -49,7 +58,9 @@ class VacationDetail extends React.Component {
         </div>
       );
     } else {
-      return <div />;
+      return (
+        <div>No Record Available!</div>
+      );
     }
   }
 }
@@ -59,7 +70,8 @@ const mapStateToProps = state => ({
   vacationDetail: getVacationDetail(state.vacationDetailState),
   vacationDetailRequestPending: getVacationDetailPending(
     state.vacationDetailState
-  )
+  ),
+  vacationType: getVacationType(state.vacationDetailState)
 });
 
 const mapDispatchToProps = dispatch =>

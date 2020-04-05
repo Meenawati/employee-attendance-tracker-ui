@@ -1,25 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./../../resources/css/VacationDetail.css";
+import { getVacationType, isVacationDetailVisible } from "../reducers/VacationDetailReducer";
+import { openVacationDetails, closeVacationDetails, fetchVacationDetail, toggleVacationDetail } from "./../actions/VacationDetailAction";
 
 class VacationDetailToggle extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      opened: false
-    };
     this.toggleBox = this.toggleBox.bind(this);
   }
 
   toggleBox() {
-    const { opened } = this.state;
-    this.setState({
-      opened: !opened
-    });
+    this.props.toggleVacationDetail(this.props.vacationDetailVisible, this.props.vacationType);
   }
 
   render() {
     var { title, children } = this.props;
-    const { opened } = this.state;
+		const opened = this.props.vacationDetailVisible;
     if (opened) {
       title = "HIDE VACATION DETAILS";
     } else {
@@ -39,11 +36,28 @@ class VacationDetailToggle extends React.Component {
           </div>
         </div>
         {opened && (
-          <div className="vacation-details-box-content">{children}</div>
-        )}
+					<div className="vacation-details-box-content">
+						{children}
+					</div>
+				)}
       </div>
     );
   }
 }
 
-export default VacationDetailToggle;
+const mapStateToProps = state => ({
+  vacationType: getVacationType(state.vacationDetailState),
+  vacationDetailVisible: isVacationDetailVisible(state.vacationDetailState)
+});
+
+const dispatchMappers = {
+  openVacationDetails: openVacationDetails,
+  closeVacationDetails: closeVacationDetails,
+  fetchVacationDetail: fetchVacationDetail,
+  toggleVacationDetail: toggleVacationDetail
+};
+
+export default connect(
+  mapStateToProps,
+  dispatchMappers
+)(VacationDetailToggle);
